@@ -206,7 +206,6 @@
 						{{else}}
 							<span title="{{.locale.Tr "gpg.default_key"}}">{{svg "gitea-lock-cog" 16 "gt-mr-3"}}</span>
 							<span class="ui text gt-mr-3">{{.locale.Tr "repo.commits.signed_by"}}:</span>
-							{{avatarByEmail $.Context .Verification.SigningEmail "" 28}}
 							<strong>{{.Verification.SigningUser.GetDisplayName}}</strong>
 						{{end}}
 					{{else}}
