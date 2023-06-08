@@ -122,6 +122,11 @@ func NewPullRequest(ctx context.Context, repo *repo_model.Repository, issue *iss
 			return err
 		}
 
+		if !pr.IsWorkInProgress() {
+			if err := issues_model.PullRequestCodeOwnersReview(ctx, issue, pr); err != nil {
+				return err
+			}
+		}
 		return nil
 	}); err != nil {
 		// cleanup: this will only remove the reference, the real commit will be clean up when next GC
